@@ -11,5 +11,7 @@ Please note, that in order to re-generate the plots the code must be run in the 
 2. Run the simulation study for the MNL algorithm. As this is performed on all sample sizes, for each replicate and on both networks (4 x 10 x 2= 80 times), this may take a considerable amount of time. We recommend running the MNL algorithm in parallel for each sample size via four R sessions as each simulation run is independent of each other. The output of the simulation study will be saved as .Rdata files. 
 3. Run the simulation study for the gLASSO and PPC algorithms. The results of this final stage will reproduce the plots in the paper. 
 
+This folder includes additional functions required for the simulation study to run, such as the C++ code to evaluate the MVN density, generation of 1st, 2nd and random binary symmetric matrices, and multiplot function to view several ggplot objects in one plot.
+
 ## Supporting Information
 The **Supporting_Information** folder contains all the supplementary material for the manuscript in pdf form.
