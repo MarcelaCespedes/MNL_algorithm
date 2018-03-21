@@ -1,5 +1,5 @@
 # MNL_algorithm
-Repository for the Maximisation of Network Likelihood (MNL) algorithm, as discussed in _An efficient algorithm for estimating brain covariance networks_ which is currently under review at PLOS One.
+Repository for the Maximisation of Network Likelihood (MNL) algorithm, as discussed in manuscript titled _An efficient algorithm for estimating brain covariance networks_ which is currently under review at PLOS One.
 
 Pre-print version of the manuscript is available at [here](https://eprints.qut.edu.au/112984/). 
 
