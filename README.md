@@ -20,7 +20,7 @@ The **Supporting_Information** folder contains all the supplementary material fo
 As this manuscript is still under revisions, pending further co-author and reviewer comments, the contents of this repository is subject to change.
 
 ## Additional tasks requried todo
-1. ~~Finish uploading all R code to reproduce the simulation study(~~MNL, PPC & gLASSO)~~ (and test all required material works!)
+1. ~~Finish uploading all R code to reproduce the simulation study(MNL, PPC & gLASSO)~~ (and test all required material works!)
 2. Upload Supporting Information 
   * Simulation study for various lambda values
   * Sample covariance matrices for S_1 and S_2
