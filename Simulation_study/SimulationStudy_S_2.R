@@ -1,7 +1,8 @@
 ######################################################
-# MNL Simulation study for S_1 matrix/ data
+# MNL Simulation study for S_2 matrix/ data
 #
 #
+
 
 library(MASS)
 library(raster)
@@ -28,8 +29,8 @@ rm(list=ls())
 
 ###
 ### Generate random symmetric matrix
-#prob = 0.1
-#mat.2<- SparseRandom_Mat(K=K, prob = prob, SEED = 123)
+#prob = 0.05
+#mat.2<- SparseRandom_Mat(K=K, prob = prob, SEED = SEED)
 
 ###
 ### combine mat.2nd.ord and mat.rand
@@ -45,9 +46,9 @@ rm(list=ls())
 # on paper 1) they multiply these binary matrices by a constant, 0.04, and make the diagonal 
 # a positive constant. Here I fiddle with different values
 
-#off.diag.cov = 0.5
+#off.diag.cov = 1
 #f.mat<- off.diag.cov*comb.mat  # when this constant is small --> poor MNL results, better with high values 
-#diag.cov <- 3
+#diag.cov <- 6
 #diag(f.mat)<- diag.cov      # likewise when the above is large, then this has to be larger
 #f.mat[1:10, 1:10]
 
@@ -72,34 +73,38 @@ rm(list=ls())
 #str(Sim.1)
 #length(Sim.1)
 
-##save(Sim.1, file = paste("SimData.Size_Cov0.5Var3_", no.samp,".Rdata", sep = "") )
+##save(Sim.1, file = paste("SimData.Size_Cov1Var6_", no.samp,".Rdata", sep = "") )
 
-########################################
 # view solution network to recover
 #sol.W<- raster(xmn = 0, xmx = K, ymn = 0, ymx = K, nrows = K, ncols = K)
 #sol.W[]<- as.vector(comb.mat)
-#x11()
-#plot(sol.W, legend = F, main = paste("Solution to recover (prob = 0.1)", sep = ""))
 
+#x11()
+#plot(sol.W, legend = F, main = paste("Solution to recover (",prob,")", sep = ""))
+
+#######################
+# view solution network to recover
+#load("SimData.Size_Cov1Var6_1000.Rdata")
 #ss<- 100
-#load(paste("SimData.Size_Cov0.5Var3_", ss, ".Rdata", sep = "") )
 #t1<- Sim.1[[sample(1:10, 1)]]  # randomly pick 1/10 reps to show covariance
 #cov.t1<- cov(t1)
+#K=70
 #p.cov<- raster(xmn = 0, xmx = K, ymn = 0, ymx = K, nrows = K, ncols = K)
 #p.cov[]<- as.vector(cov(t1))
 #x11()
 #plot(p.cov, main = paste("Sample covariance for sample size ", ss,sep = ""))
-
+#x11()
+#p.cov[]<- as.vector(Sim.1[[11]])
+#plot(p.cov, main = "Solution to recover (0.05)", legend = FALSE)
 
 ## **********************************************************************************************
 ## **********************************************************************************************
 ## **********************************************************************************************
 
 
-                ###################################################################
-                ### Begin simulation study        #################################
-                ###################################################################
-
+            ###################################################################
+            ### Begin simulation study        #################################
+            ###################################################################
 
 rm(list = ls())
 
@@ -110,7 +115,7 @@ source("MNL_v2.r")
 source("Specificity.Sensitivity.r")
 source("OrderMat_1stOR2nd.R")
 source("rand_W.R")
-load("SimData.Size_Cov0.5Var3_100.Rdata")
+load("SimData.Size_Cov1Var6_100.Rdata")
 
 comb.mat<- Sim.1[[11]]
 comb.mat[1:10, 1:10]  # <-- solution matrix
@@ -139,9 +144,9 @@ spec.sens.mnl <- W.keep<- list()
 no.links.mnl<- log.lik<- s2s.est<- mnl.spec<- mnl.sens<- init.s2s<- c()
 
 
-    ## **********************
-    ## Begin simulation
-    ## **********************
+        ## **********************
+        ## Begin simulation
+        ## **********************
 
 tiMe<- proc.time()
 pb <- txtProgressBar(min = 0, max = no.reps, style = 3)
@@ -170,19 +175,26 @@ for(s in 1:no.reps){
 close(pb)
 (proc.time() - tiMe)/60
 
-      ## **********************
-      ## End simulation
-      ## **********************
+        ## **********************
+        ## End simulation
+        ## **********************
+
+no.links.mnl
+mnl.sens
+mnl.spec
+s2s.est
+spec.sens.mnl[[s]]
 
 
-mnl.sim<- list(samp.size = samp.size, sim.data = paste("SimData.Size_Cov0.5Var3_", samp.size,".Rdata", sep = ""),
-               mnl.spec = mnl.spec, mnl.sens = mnl.sens, no.links.mnl = no.links.mnl, init.s2s = init.s2s,
+mnl.sim<- list(samp.size = samp.size, sim.data = paste("SimData.Size_Cov1Var6_", samp.size,".Rdata", sep = ""),
+               mnl.spec = mnl.spec, mnl.sens = mnl.sens, no.links.mnl = no.links.mnl, init.s2s = rep(10, no.reps),
                W.keep = W.keep, s2s.est = s2s.est, no.runs = no.runs, spec.sens.mnl = spec.sens.mnl,
                no.reps = no.reps)
 
 str(mnl.sim)
 
-#save(mnl.sim, file = paste("redoSimStudy_S1_SampSize", samp.size,".Rdata",sep = ""))
+
+#save(mnl.sim, file = paste("redoSimStudy_S2_SampSize", samp.size,".Rdata",sep = ""))
 
 ## *********************************
 ## view and compare results
@@ -196,14 +208,6 @@ str(mnl.sim)
 
 #x11()
 #plot(diff.mnl.sol, legend=TRUE, main = "Difference MNL and solution")
-
-no.links.mnl
-mnl.sens
-mnl.spec
-s2s.est
-
-spec.sens.mnl[[s]]
-
 
 ## *************************************
 ## Visualise results as per manuscript
