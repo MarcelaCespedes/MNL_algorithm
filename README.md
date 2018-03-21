@@ -15,3 +15,17 @@ This folder includes additional functions required for the simulation study to r
 
 ## Supporting Information
 The **Supporting_Information** folder contains all the supplementary material for the manuscript in pdf form.
+
+# NOTE
+As this manuscript is still under revisions, pending further co-author and reviewer comments, the contents of this repository is subject to change.
+
+## Additional tasks requried todo
+1. Finish uploading all R code to reproduce the simulation study (and test all required material works!)
+2. Upload Supporting Information 
+  * Simulation study for various lambda values
+  * Sample covariance matrices for S_1 and S_2
+  * Selected ROI scatter plot pairs which demonstrate the presense and absence of connections
+  * MNL residual plots
+  * MNL partial correlation plots
+  * Full gLASSO results on simulated data
+  * MNL approach to 35 ROI from Wombling paper
