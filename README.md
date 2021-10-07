@@ -1,7 +1,5 @@
 # MNL_algorithm
-Repository for the Maximisation of Network Likelihood (MNL) algorithm, as discussed in manuscript titled _An efficient algorithm for estimating brain covariance networks_ which is currently under review at PLOS One.
-
-Pre-print version of the manuscript is available at [here](https://eprints.qut.edu.au/112984/). 
+Repository for the Maximisation of Network Likelihood (MNL) algorithm, as discussed in manuscript titled _An efficient algorithm for estimating brain covariance networks_ published in PLOS One, available [here](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0198583).
 
 ## Reproduce the simulation study 
 The **Simulation_study** folder contains all the necessary R code to generate simulated data from binary matrices <a href="http://www.codecogs.com/eqnedit.php?latex=S_1" target="_blank"><img src="http://latex.codecogs.com/gif.latex?S_1" title="S_1" /></a> and <a href="http://www.codecogs.com/eqnedit.php?latex=S_2" target="_blank"><img src="http://latex.codecogs.com/gif.latex?S_2" title="S_2" /></a> and then perform the simulated study for the MNL algorithm, as well as for the graphical LASSO (gLASSO) and Pearson's pairwise correlation (PPC) analyses and reproduce the plots in the manuscript.
@@ -15,9 +13,6 @@ This folder includes additional functions required for the simulation study to r
 
 ## Supporting Information
 The **Supporting_Information** folder contains all the supplementary material for the manuscript in pdf form.
-
-# NOTE
-As this manuscript is still under revisions, pending further co-author and reviewer comments, the contents of this repository is subject to change.
 
 ## Additional tasks requried todo
 1. ~~Finish uploading all R code to reproduce the simulation study(MNL, PPC & gLASSO)~~ (and test all required material works!)
